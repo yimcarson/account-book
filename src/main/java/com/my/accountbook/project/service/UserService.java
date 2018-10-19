@@ -3,7 +3,7 @@ package com.my.accountbook.project.service;
 import com.my.accountbook.project.entity.User;
 
 public interface UserService {
-    User get(User record) throws Exception;
+    User get(User record);
 
-    int edit(User user);
+    int edit(User record);
 }

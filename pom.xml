@@ -258,9 +258,9 @@
             <artifactId>spring-session-data-redis</artifactId>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.springframework.data</groupId>-->
-            <!--<artifactId>spring-data-redis</artifactId>-->
-            <!--<version>2.0.10.RELEASE</version>-->
+        <!--<groupId>org.springframework.data</groupId>-->
+        <!--<artifactId>spring-data-redis</artifactId>-->
+        <!--<version>2.0.10.RELEASE</version>-->
         <!--</dependency>-->
         <dependency>
             <groupId>redis.clients</groupId>

@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import redis.clients.jedis.JedisPool;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes={Application.class})
+@SpringBootTest(classes = {Application.class})
 public class UserServiceTest {
     @Autowired
     private UserMapper userMapper;
@@ -34,7 +34,7 @@ public class UserServiceTest {
     public void testGet() {
         UserExample userExample = new UserExample();
         UserExample.Criteria userExampleCriteria = userExample.createCriteria();
-        userExampleCriteria.andUsernameEqualTo("admin");
+        userExampleCriteria.andUsernameEqualTo("yimcarson");
         User user = userMapper.selectByExample(userExample).get(0);
         System.out.println(user);
     }

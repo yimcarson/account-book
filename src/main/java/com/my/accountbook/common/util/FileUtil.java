@@ -9,20 +9,21 @@ public class FileUtil {
 
     /**
      * 写文件
+     *
      * @param fileName
      * @param content
      */
-    public static void writeFile(String fileName, String content){
+    public static void writeFile(String fileName, String content) {
         FileWriter output = null;
         BufferedWriter writer = null;
-        try{
+        try {
             output = new FileWriter(fileName);
             writer = new BufferedWriter(output);
             writer.write(content);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
-            if(null != writer){
+        } finally {
+            if (null != writer) {
                 try {
                     writer.close();
                 } catch (IOException e) {
@@ -30,7 +31,7 @@ public class FileUtil {
                     e.printStackTrace();
                 }
             }
-            if(null != output){
+            if (null != output) {
                 try {
                     output.close();
                 } catch (IOException e) {
@@ -43,24 +44,25 @@ public class FileUtil {
 
     /**
      * 读文件
+     *
      * @param fileName
      * @return
      */
-    public static String readFile(String fileName){
+    public static String readFile(String fileName) {
         StringBuffer sb = new StringBuffer("");
         FileReader input = null;
         BufferedReader reader = null;
-        try{
+        try {
             input = new FileReader(fileName);
             reader = new BufferedReader(input);
             String line = null;
-            while((line = reader.readLine()) != null){
+            while ((line = reader.readLine()) != null) {
                 sb.append(line);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
-            if(null != reader){
+        } finally {
+            if (null != reader) {
                 try {
                     reader.close();
                 } catch (IOException e) {
@@ -68,7 +70,7 @@ public class FileUtil {
                     e.printStackTrace();
                 }
             }
-            if(null != input){
+            if (null != input) {
                 try {
                     input.close();
                 } catch (IOException e) {

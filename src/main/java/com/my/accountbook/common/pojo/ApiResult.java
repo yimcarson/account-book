@@ -3,8 +3,6 @@ package com.my.accountbook.common.pojo;
 public class ApiResult<T> {
     private int code;
 
-
-
     private String msg;
 
     private T data;
@@ -31,5 +29,14 @@ public class ApiResult<T> {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    public ApiResult(int code, String msg, T data) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
+
+    public ApiResult() {
     }
 }

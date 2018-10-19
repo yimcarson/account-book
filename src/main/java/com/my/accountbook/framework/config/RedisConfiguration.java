@@ -17,15 +17,16 @@ public class RedisConfiguration {
     /**
      * 注入jedisPool
      * 用于手动调用jedisPool.getResource().set()/get()
+     *
      * @return
      */
     @Bean
-    public JedisPool getJedisPool(){
+    public JedisPool getJedisPool() {
         JedisPoolConfig config = new JedisPoolConfig();
         config.setMaxIdle(properties.getJedis().getPool().getMaxIdle());
         config.setMaxTotal(properties.getJedis().getPool().getMaxActive());
         config.setMaxWaitMillis(properties.getJedis().getPool().getMaxWait().toMillis());
-        JedisPool pool = new JedisPool(config,properties.getHost(),properties.getPort(),100, properties.getPassword(), properties.getDatabase());
+        JedisPool pool = new JedisPool(config, properties.getHost(), properties.getPort(), 100, properties.getPassword(), properties.getDatabase());
         return pool;
     }
 }

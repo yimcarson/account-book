@@ -15,23 +15,27 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public User get(User record) throws Exception {
+    public User get(User record) {
         UserExample userExample = new UserExample();
         UserExample.Criteria userExampleCriteria = userExample.createCriteria();
+        userExampleCriteria.andIsDeleteEqualTo(false);
         Integer id = record.getId();
         String username = record.getUsername();
+        Boolean isDelete = record.getIsDelete();
         if (id != null) {
             userExampleCriteria.andIdEqualTo(id);
-        } else if (username != null) {
+        }
+        if (username != null) {
             userExampleCriteria.andUsernameEqualTo(username);
-        } else {
-            throw new RuntimeException("Parameter is missing");
+        }
+        if (isDelete != null) {
+            userExampleCriteria.andIsDeleteEqualTo(isDelete);
         }
         List<User> userList = userMapper.selectByExample(userExample);
         if (userList != null && userList.size() != 0) {
             return userList.get(0);
         } else {
-            throw new RuntimeException("User does not exist");
+            return null;
         }
 
     }
@@ -39,11 +43,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public int edit(User record) {
         int flag = 0;
-        if (record != null && record.getId() != null) {
-            flag = userMapper.updateByPrimaryKeySelective(record);
-        } else if (record != null && record.getId() == null) {
-            flag = userMapper.insertSelective(record);
+        try {
+            if (record != null && record.getId() != null) {
+                flag = userMapper.updateByPrimaryKeySelective(record);
+            } else if (record != null && record.getId() == null) {
+                flag = userMapper.insertSelective(record);
+            }
+        } catch (RuntimeException e) {
+            e.printStackTrace();
         }
+
         return flag;
     }
 }

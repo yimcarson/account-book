@@ -3,8 +3,7 @@ package com.my.accountbook.project.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
-//同时忽略请求参数中的IgnoreProperties
-//@JsonIgnoreProperties(value = {"password"})
+
 public class User {
     private Integer id;
 
@@ -14,11 +13,29 @@ public class User {
 
     private String nickname;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date createTime;
+    private String headimage;
+
+    private String email;
+
+    private String mobile;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date modifyTime;
+    private Date signupTime;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date signinTime;
+
+    private String signinIp;
+
+    private Byte status;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date insertTime;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date updateTime;
+
+    private Boolean isDelete;
 
     public Integer getId() {
         return id;
@@ -52,20 +69,84 @@ public class User {
         this.nickname = nickname == null ? null : nickname.trim();
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public String getHeadimage() {
+        return headimage;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setHeadimage(String headimage) {
+        this.headimage = headimage == null ? null : headimage.trim();
     }
 
-    public Date getModifyTime() {
-        return modifyTime;
+    public String getEmail() {
+        return email;
     }
 
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile == null ? null : mobile.trim();
+    }
+
+    public Date getSignupTime() {
+        return signupTime;
+    }
+
+    public void setSignupTime(Date signupTime) {
+        this.signupTime = signupTime;
+    }
+
+    public Date getSigninTime() {
+        return signinTime;
+    }
+
+    public void setSigninTime(Date signinTime) {
+        this.signinTime = signinTime;
+    }
+
+    public String getSigninIp() {
+        return signinIp;
+    }
+
+    public void setSigninIp(String signinIp) {
+        this.signinIp = signinIp == null ? null : signinIp.trim();
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
+    }
+
+    public Date getInsertTime() {
+        return insertTime;
+    }
+
+    public void setInsertTime(Date insertTime) {
+        this.insertTime = insertTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Boolean getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Boolean isDelete) {
+        this.isDelete = isDelete;
     }
 
     @Override
@@ -79,10 +160,26 @@ public class User {
                 .append(password).append('\"');
         sb.append(",\"nickname\":\"")
                 .append(nickname).append('\"');
-        sb.append(",\"createTime\":\"")
-                .append(createTime).append('\"');
-        sb.append(",\"modifyTime\":\"")
-                .append(modifyTime).append('\"');
+        sb.append(",\"headimage\":\"")
+                .append(headimage).append('\"');
+        sb.append(",\"email\":\"")
+                .append(email).append('\"');
+        sb.append(",\"mobile\":\"")
+                .append(mobile).append('\"');
+        sb.append(",\"signupTime\":\"")
+                .append(signupTime).append('\"');
+        sb.append(",\"signinTime\":\"")
+                .append(signinTime).append('\"');
+        sb.append(",\"signinIp\":\"")
+                .append(signinIp).append('\"');
+        sb.append(",\"status\":")
+                .append(status);
+        sb.append(",\"insertTime\":\"")
+                .append(insertTime).append('\"');
+        sb.append(",\"updateTime\":\"")
+                .append(updateTime).append('\"');
+        sb.append(",\"isDelete\":")
+                .append(isDelete);
         sb.append('}');
         return sb.toString();
     }
